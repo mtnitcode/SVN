@@ -269,10 +269,10 @@ namespace Sbn.Products.SVN.DAL
 				
 
 			List<BranchFile> bfs = new List<BranchFile>();
-			for (int i = 1; i <= iCount; i++)
-			{
-				bfs.Add(new BranchFile {  DevelopmentStatus= ContentStatus.CheckedOut});
-			}
+			//for (int i = 1; i <= iCount; i++)
+			//{
+			//	bfs.Add(new BranchFile {  DevelopmentStatus= ContentStatus.CheckedOut});
+			//}
 
 
 			var sql = @"select * from (
@@ -308,7 +308,8 @@ namespace Sbn.Products.SVN.DAL
 				bf.FilePath = r["ContentPath"].ToString();
 				bf.LastEditionDate = Convert.ToDateTime(r["Editiondate"].ToString());
 				bf.DevelopmentStatus = ContentStatus.CheckedOut;
-				bfs[iRow-1] = bf;
+                bfs.Add(bf);
+                //bfs[iRow-1] = bf;
 				iRow++;
 			}
 			if (dt.Rows.Count == 0) bfs = new List<BranchFile>();
@@ -601,7 +602,7 @@ namespace Sbn.Products.SVN.DAL
 				}
 			}
 
-			sql = "[mtnitcom].[FreeTransactionLog]";
+			sql = "[dbo].[FreeTransactionLog]";
 			affectedCount = _handler.ExecuteNonQuery(CommandType.StoredProcedure, sql);
 		}
 	}
