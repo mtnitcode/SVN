@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sbn.Products.SVN.SVNClient.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="sProjectFilesExtention" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">.csproj</Value>
+    </Setting>
+    <Setting Name="sProjectFilesExclude" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">.dll,.exe,.pdb,.cache,.resources,.baml,.stat</Value>
+    </Setting>
+    <Setting Name="sProjectPathsExclude" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\obj\debug,</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

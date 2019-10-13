@@ -1,0 +1,84 @@
+\Sbn.Products.SVN.DTO\Properties\AssemblyInfo.cs;12/15/2016 5:44:42 PM
+\Sbn.Products.SVN.Service\IRepositoryService.cs;3/2/2017 2:03:06 PM
+\Sbn.Products.SVN.Service\RepositoryService.svc;12/29/2016 11:48:46 AM
+\Sbn.Products.SVN.Service\RepositoryService.svc.cs;3/4/2017 2:05:42 PM
+\Sbn.Products.SVN.Service\Sbn.Products.SVN.Service.csproj;3/6/2017 12:25:38 PM
+\Sbn.Products.SVN.Service\Sbn.Products.SVN.Service.csproj.user;3/6/2017 12:25:38 PM
+\Sbn.Products.SVN.Service\Web.config;3/7/2017 9:30:56 AM
+\Sbn.Products.SVN.Service\Web.Debug.config;12/29/2016 11:43:52 AM
+\Sbn.Products.SVN.Service\Web.Release.config;12/29/2016 11:43:52 AM
+\Sbn.Products.SVN.Service\bin\Sbn.Products.SVN.Service.dll.config;3/7/2017 9:30:56 AM
+\Sbn.Products.SVN.Service\Properties\AssemblyInfo.cs;12/29/2016 11:43:52 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService.sln;3/7/2017 9:39:58 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService.v12.suo;3/13/2017 11:28:53 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\CustomEmplementaion.cs;12/22/2016 5:57:24 PM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\ISourceVersioningService.cs;12/29/2016 11:16:20 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\notes.txt;12/22/2016 9:43:54 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceVersioningService.csproj;12/29/2016 11:37:44 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceVersioningService.csproj.user;12/29/2016 11:37:44 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\SourceVersioningService.svc;12/29/2016 11:16:22 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\SourceVersioningService.svc.cs;12/29/2016 11:16:22 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\Web.config;12/29/2016 11:39:40 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\Web.Debug.config;12/15/2016 5:42:06 PM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\Web.Release.config;12/15/2016 5:42:06 PM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\bin\Sbn.Products.SVN.SourceVersioningService.dll.config;12/29/2016 11:37:40 AM
+\Sbn.Products.SVN.SourceRepositoryService\Sbn.Products.SVN.SourceRepositoryService\Properties\AssemblyInfo.cs;12/22/2016 2:03:04 PM
+\Sbn.Products.SVN.SourceRepositoryWebService\RepositoryService.asmx;3/7/2017 9:36:20 AM
+\Sbn.Products.SVN.SourceRepositoryWebService\RepositoryService.asmx.cs;3/13/2017 3:14:28 PM
+\Sbn.Products.SVN.SourceRepositoryWebService\Sbn.Products.SVN.SourceRepositoryWebService.csproj;3/9/2017 12:35:28 PM
+\Sbn.Products.SVN.SourceRepositoryWebService\Sbn.Products.SVN.SourceRepositoryWebService.csproj.user;3/9/2017 12:35:28 PM
+\Sbn.Products.SVN.SourceRepositoryWebService\Web.config;3/11/2017 5:54:04 PM
+\Sbn.Products.SVN.SourceRepositoryWebService\Web.Debug.config;3/7/2017 9:34:04 AM
+\Sbn.Products.SVN.SourceRepositoryWebService\Web.Release.config;3/7/2017 9:34:04 AM
+\Sbn.Products.SVN.SourceRepositoryWebService\bin\Sbn.Products.SVN.SourceRepositoryWebService.dll.config;3/11/2017 5:54:04 PM
+\Sbn.Products.SVN.SourceRepositoryWebService\Properties\AssemblyInfo.cs;3/7/2017 9:34:04 AM
+\Sbn.Products.SVN.SVNClient\App.config;3/13/2017 3:23:04 PM
+\Sbn.Products.SVN.SVNClient\App.xaml;12/22/2016 8:53:10 AM
+\Sbn.Products.SVN.SVNClient\App.xaml.cs;12/22/2016 8:53:10 AM
+\Sbn.Products.SVN.SVNClient\MainWindow.xaml;3/13/2017 1:17:45 PM
+\Sbn.Products.SVN.SVNClient\MainWindow.xaml.cs;3/13/2017 3:21:29 PM
+\Sbn.Products.SVN.SVNClient\Sbn.Products.SVN.SVNClient.csproj;3/12/2017 8:27:14 AM
+\Sbn.Products.SVN.SVNClient\Sbn.Products.SVN.SVNClient.sln;3/2/2017 2:11:02 PM
+\Sbn.Products.SVN.SVNClient\Sbn.Products.SVN.SVNClient.v12.suo;3/13/2017 9:17:54 AM
+\Sbn.Products.SVN.SVNClient\Tool.cs;3/12/2017 9:27:20 AM
+\Sbn.Products.SVN.SVNClient\bin\Debug\Sbn.Products.SVN.SVNClient.exe.config;3/13/2017 3:23:04 PM
+\Sbn.Products.SVN.SVNClient\bin\Debug\Sbn.Products.SVN.SVNClient.vshost.exe.config;3/13/2017 3:23:04 PM
+\Sbn.Products.SVN.SVNClient\bin\Debug\Sbn.Products.SVN.SVNClient.vshost.exe.manifest;3/18/2013 5:00:38 PM
+\Sbn.Products.SVN.SVNClient\Files\BranchContents.txt;12/22/2016 2:03:04 PM
+\Sbn.Products.SVN.SVNClient\Files\ProjectContents.txt;12/22/2016 8:59:54 AM
+\Sbn.Products.SVN.SVNClient\Properties\AssemblyInfo.cs;12/22/2016 8:53:10 AM
+\Sbn.Products.SVN.SVNClient\Properties\Resources.Designer.cs;12/22/2016 8:53:10 AM
+\Sbn.Products.SVN.SVNClient\Properties\Resources.resx;12/22/2016 8:53:10 AM
+\Sbn.Products.SVN.SVNClient\Properties\Settings.Designer.cs;3/13/2017 11:42:05 AM
+\Sbn.Products.SVN.SVNClient\Properties\Settings.settings;3/13/2017 11:42:05 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\basic.disco;3/6/2017 10:55:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\basic.xsd;3/6/2017 10:55:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\basic1.xsd;3/6/2017 10:55:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\basic2.xsd;3/6/2017 10:55:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\configuration.svcinfo;3/13/2017 10:35:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\configuration91.svcinfo;3/13/2017 10:35:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Reference.cs;3/13/2017 10:35:27 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Reference.svcmap;3/13/2017 10:35:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\repositoryservice.disco;3/13/2017 10:35:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\RepositoryService.wsdl;3/13/2017 10:35:26 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.ApplyBranchToProjectVersionResponse.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.BranchFile.datasource;3/13/2017 10:35:27 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.DownloadBranchContentResponse.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.DownloadProjectContentResponse.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.GetProjectBranchResponse.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.GetProjectBranchStateResponse.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.GetProjectsResponse.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.HelloWorldResponse.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.ProjectVersion.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.UploadBranchContentResponse.datasource;3/13/2017 10:35:28 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\Sbn.Products.SVN.SVNClient.RepositoryService.GetProjectFileStateResponse.datasource;3/14/2017 2:44:44 AM
+\Sbn.Products.SVN.DAL\obj\Debug\Sbn.Products.SVN.DAL.csproj.FileListAbsolute.txt;3/13/2017 4:43:54 PM
+\Sbn.Products.SVN.DAL\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs;12/15/2016 5:45:30 PM
+\Sbn.Products.SVN.SVNClient\UploadBranchFiles.xaml;3/15/2017 5:22:33 PM
+\Sbn.Products.SVN.SVNClient\UploadBranchFiles.xaml.cs;3/15/2017 5:32:46 PM
+\Sbn.Products.SVN.SVNClient\bin\SVN.rar;3/14/2017 1:37:18 PM
+\Sbn.Products.SVN.SVNClient\Graphicloads-Colorful-Long-Shadow-Html-tags.ico;3/16/2017 10:27:49 AM
+\Sbn.Products.SVN.SVNClient\images\Graphicloads-Colorful-Long-Shadow-Html-tags.ico;3/16/2017 10:27:09 AM
+\Sbn.Products.SVN.SVNClient\images\Html-tags-icon.png;3/16/2017 10:27:30 AM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\repositoryservice1.disco;3/16/2017 12:11:26 PM
+\Sbn.Products.SVN.SVNClient\Service References\RepositoryService\repositoryservice1.wsdl;3/16/2017 12:11:26 PM

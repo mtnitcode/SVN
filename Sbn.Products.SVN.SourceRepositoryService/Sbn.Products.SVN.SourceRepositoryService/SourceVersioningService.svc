@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Sbn.Products.SVN.SourceVersioningService.SourceVersioningService" CodeBehind="SourceVersioningService.svc.cs" %>

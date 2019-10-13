@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadBranchContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataFile" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BranchFile">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataFile">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="Branch" type="tns:Branch" />
+              <s:element minOccurs="1" maxOccurs="1" name="DevelopmentStatus" type="tns:ContentStatus" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DataFile">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FileId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileContent" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FilePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Developer" type="tns:Developer" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastEditionDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Developer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Role" type="tns:DeveloperRole" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branches" type="tns:ArrayOfBranch" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DeveloperRole">
+        <s:restriction base="s:string">
+          <s:enumeration value="Amdin" />
+          <s:enumeration value="Developer" />
+          <s:enumeration value="Integrator" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfBranch">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Branch" nillable="true" type="tns:Branch" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Branch">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectVersion" type="tns:ProjectVersion" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocalPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Developer" type="tns:Developer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProjectVersion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VersionNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="tns:Project" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectAccessright" type="tns:ProjectAccessright" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfProjectVersionFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProjectVersionFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProjectVersionFile" nillable="true" type="tns:ProjectVersionFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProjectVersionFile">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataFile">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DevelopmentStatus" type="tns:ContentStatus" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ContentStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="CheckedIN" />
+          <s:enumeration value="CheckedOut" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ProjectAccessright">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectAccess" type="tns:Project" />
+          <s:element minOccurs="0" maxOccurs="1" name="Developer" type="tns:Developer" />
+          <s:element minOccurs="1" maxOccurs="1" name="Accessright" type="tns:Accessright" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Accessright">
+        <s:restriction base="s:string">
+          <s:enumeration value="Read" />
+          <s:enumeration value="Write" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UploadBranchContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadBranchContentResult" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadBranchContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataFile" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadBranchContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadBranchContentResult" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProjectContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataFile" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProjectContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadProjectContentResult" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectBranchState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="branch" type="tns:Branch" />
+            <s:element minOccurs="0" maxOccurs="1" name="customPath" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectBranchStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectBranchStateResult" type="tns:ArrayOfBranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBranchFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BranchFile" nillable="true" type="tns:BranchFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetProjectContentHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bf" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectContentHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectContentHistoryResult" type="tns:ArrayOfBranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectFileState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="branch" type="tns:Branch" />
+            <s:element minOccurs="0" maxOccurs="1" name="customPath" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectFileStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectFileStateResult" type="tns:ArrayOfBranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSolutions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="developer" type="tns:Developer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSolutionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSolutionsResult" type="tns:ArrayOfSolution" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSolution">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Solution" nillable="true" type="tns:Solution" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Solution">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Projects" type="tns:ArrayOfProject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetProjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="developer" type="tns:Developer" />
+            <s:element minOccurs="0" maxOccurs="1" name="sln" type="tns:Solution" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsResult" type="tns:ArrayOfProjectVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProjectVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProjectVersion" nillable="true" type="tns:ProjectVersion" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDevelopersBranch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="branch" type="tns:Branch" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDevelopersBranchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDevelopersBranchResult" type="tns:ArrayOfBranch" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectBranch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="branchFile" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectBranchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectBranchResult" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyBranchToProjectVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="branchFile" type="tns:BranchFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyBranchToProjectVersionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerDatetime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerDatetimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetServerDatetimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadBranchContentSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadBranchContent" />
+  </wsdl:message>
+  <wsdl:message name="UploadBranchContentSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadBranchContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBranchContentSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadBranchContent" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBranchContentSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadBranchContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProjectContentSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadProjectContent" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProjectContentSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadProjectContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectBranchStateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjectBranchState" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectBranchStateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectBranchStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectContentHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjectContentHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectContentHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectContentHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectFileStateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjectFileState" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectFileStateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectFileStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSolutionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSolutions" />
+  </wsdl:message>
+  <wsdl:message name="GetSolutionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSolutionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDevelopersBranchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDevelopersBranch" />
+  </wsdl:message>
+  <wsdl:message name="GetDevelopersBranchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDevelopersBranchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectBranchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjectBranch" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectBranchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectBranchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplyBranchToProjectVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:ApplyBranchToProjectVersion" />
+  </wsdl:message>
+  <wsdl:message name="ApplyBranchToProjectVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:ApplyBranchToProjectVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerDatetimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerDatetime" />
+  </wsdl:message>
+  <wsdl:message name="GetServerDatetimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerDatetimeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RepositoryServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadBranchContent">
+      <wsdl:input message="tns:UploadBranchContentSoapIn" />
+      <wsdl:output message="tns:UploadBranchContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBranchContent">
+      <wsdl:input message="tns:DownloadBranchContentSoapIn" />
+      <wsdl:output message="tns:DownloadBranchContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProjectContent">
+      <wsdl:input message="tns:DownloadProjectContentSoapIn" />
+      <wsdl:output message="tns:DownloadProjectContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectBranchState">
+      <wsdl:input message="tns:GetProjectBranchStateSoapIn" />
+      <wsdl:output message="tns:GetProjectBranchStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectContentHistory">
+      <wsdl:input message="tns:GetProjectContentHistorySoapIn" />
+      <wsdl:output message="tns:GetProjectContentHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectFileState">
+      <wsdl:input message="tns:GetProjectFileStateSoapIn" />
+      <wsdl:output message="tns:GetProjectFileStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSolutions">
+      <wsdl:input message="tns:GetSolutionsSoapIn" />
+      <wsdl:output message="tns:GetSolutionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input message="tns:GetProjectsSoapIn" />
+      <wsdl:output message="tns:GetProjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopersBranch">
+      <wsdl:input message="tns:GetDevelopersBranchSoapIn" />
+      <wsdl:output message="tns:GetDevelopersBranchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectBranch">
+      <wsdl:input message="tns:GetProjectBranchSoapIn" />
+      <wsdl:output message="tns:GetProjectBranchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyBranchToProjectVersion">
+      <wsdl:input message="tns:ApplyBranchToProjectVersionSoapIn" />
+      <wsdl:output message="tns:ApplyBranchToProjectVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerDatetime">
+      <wsdl:input message="tns:GetServerDatetimeSoapIn" />
+      <wsdl:output message="tns:GetServerDatetimeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RepositoryServiceSoap" type="tns:RepositoryServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadBranchContent">
+      <soap:operation soapAction="http://tempuri.org/UploadBranchContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBranchContent">
+      <soap:operation soapAction="http://tempuri.org/DownloadBranchContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProjectContent">
+      <soap:operation soapAction="http://tempuri.org/DownloadProjectContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectBranchState">
+      <soap:operation soapAction="http://tempuri.org/GetProjectBranchState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectContentHistory">
+      <soap:operation soapAction="http://tempuri.org/GetProjectContentHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectFileState">
+      <soap:operation soapAction="http://tempuri.org/GetProjectFileState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSolutions">
+      <soap:operation soapAction="http://tempuri.org/GetSolutions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <soap:operation soapAction="http://tempuri.org/GetProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopersBranch">
+      <soap:operation soapAction="http://tempuri.org/GetDevelopersBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectBranch">
+      <soap:operation soapAction="http://tempuri.org/GetProjectBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyBranchToProjectVersion">
+      <soap:operation soapAction="http://tempuri.org/ApplyBranchToProjectVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerDatetime">
+      <soap:operation soapAction="http://tempuri.org/GetServerDatetime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RepositoryServiceSoap12" type="tns:RepositoryServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadBranchContent">
+      <soap12:operation soapAction="http://tempuri.org/UploadBranchContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBranchContent">
+      <soap12:operation soapAction="http://tempuri.org/DownloadBranchContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProjectContent">
+      <soap12:operation soapAction="http://tempuri.org/DownloadProjectContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectBranchState">
+      <soap12:operation soapAction="http://tempuri.org/GetProjectBranchState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectContentHistory">
+      <soap12:operation soapAction="http://tempuri.org/GetProjectContentHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectFileState">
+      <soap12:operation soapAction="http://tempuri.org/GetProjectFileState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSolutions">
+      <soap12:operation soapAction="http://tempuri.org/GetSolutions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <soap12:operation soapAction="http://tempuri.org/GetProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopersBranch">
+      <soap12:operation soapAction="http://tempuri.org/GetDevelopersBranch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectBranch">
+      <soap12:operation soapAction="http://tempuri.org/GetProjectBranch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyBranchToProjectVersion">
+      <soap12:operation soapAction="http://tempuri.org/ApplyBranchToProjectVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerDatetime">
+      <soap12:operation soapAction="http://tempuri.org/GetServerDatetime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RepositoryService">
+    <wsdl:port name="RepositoryServiceSoap" binding="tns:RepositoryServiceSoap">
+      <soap:address location="http://localhost/svnservice/repositoryservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RepositoryServiceSoap12" binding="tns:RepositoryServiceSoap12">
+      <soap12:address location="http://localhost/svnservice/repositoryservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
